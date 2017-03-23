@@ -7,7 +7,6 @@
     "jest-expo": "^0.3.0",
     "react-test-renderer": "~15.4.1"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
@@ -21,9 +20,10 @@
   "dependencies": {
     "@expo/ex-navigation": "^2.9.4",
     "babel-preset-react-native-stage-0": "^1.0.1",
-    "expo": "^15.1.0",
-    "react": "~15.4.0",
-    "react-native": "0.42.3",
-    "styled-components": "^1.4.4"
+    "expo": "~15.0.0",
+    "react": "~15.4.2",
+    "react-native": "github:exponent/react-native#sdk-15.0.0",
+    "styled-components": "^1.4.4",
+    "@expo/vector-icons": "~4.0.0"
   }
 }

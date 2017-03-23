@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import HomePage from './app/home-page';
+import ProfilePage from './app/profile-page';
 import {
   createRouter,
   StackNavigation,
@@ -23,12 +23,12 @@ class MainScreen extends React.Component {
       <TabNavigation
         id="tab-navigation"
         navigatorUID="tab-navigation"
-        initialTab="home">
+        initialTab="profile">
         <TabNavigationItem
-          id="home"
-          title="Home"
+          id="profile"
+          title="Profile"
           renderTitle={this._renderTitle}>
-          <HomePage />
+          <ProfilePage />
         </TabNavigationItem>
         <TabNavigationItem
           id="news"
