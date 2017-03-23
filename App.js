@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 import ProfilePage from './app/profile-page';
+import NewsPage from './app/news-page';
+
 import {
   createRouter,
   StackNavigation,
@@ -23,7 +25,7 @@ class MainScreen extends React.Component {
       <TabNavigation
         id="tab-navigation"
         navigatorUID="tab-navigation"
-        initialTab="profile">
+        initialTab="news">
         <TabNavigationItem
           id="profile"
           title="Profile"
@@ -34,7 +36,7 @@ class MainScreen extends React.Component {
           id="news"
           title="News"
           renderTitle={this._renderTitle}>
-          <Text>SUP</Text>
+          <NewsPage />
         </TabNavigationItem>
       </TabNavigation>
     );
