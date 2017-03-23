@@ -1,5 +1,7 @@
 {
   "expo": {
+    "name": "gronda-news",
+    "slug": "gronda-news",
     "sdkVersion": "15.0.0"
   }
 }

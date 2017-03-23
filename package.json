@@ -19,8 +19,11 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/ex-navigation": "^2.9.4",
+    "babel-preset-react-native-stage-0": "^1.0.1",
     "expo": "^15.1.0",
     "react": "~15.4.0",
-    "react-native": "0.42.3"
+    "react-native": "0.42.3",
+    "styled-components": "^1.4.4"
   }
 }
