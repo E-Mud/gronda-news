@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 import ProfilePage from './app/profile-page';
-import NewsPage from './app/news-page';
+import NewsList from './app/news-list';
+import NewsDetails from './app/news-details';
 
 import {
   createRouter,
@@ -11,13 +12,28 @@ import {
   NavigationProvider
 } from '@expo/ex-navigation';
 
+const Router = createRouter(() => ({
+  main: () => MainScreen,
+  newsDetails: () => NewsDetails
+}));
+
 class MainScreen extends React.Component {
+  constructor(props){
+    super(props)
+
+    this._showNewsDetails = this._showNewsDetails.bind(this);
+  }
+
   _renderTitle(isSelected, title) {
     return (
       <Text>
         {title}
       </Text>
     );
+  }
+
+  _showNewsDetails(newsItem) {
+    this.props.navigator.push(Router.getRoute('newsDetails', {newsItem}))
   }
 
   render() {
@@ -36,16 +52,12 @@ class MainScreen extends React.Component {
           id="news"
           title="News"
           renderTitle={this._renderTitle}>
-          <NewsPage />
+          <NewsList onNewsClicked={this._showNewsDetails}/>
         </TabNavigationItem>
       </TabNavigation>
     );
   }
 }
-
-const Router = createRouter(() => ({
-  main: () => MainScreen,
-}));
 
 export default class App extends React.Component {
   render() {

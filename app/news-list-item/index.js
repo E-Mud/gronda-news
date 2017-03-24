@@ -6,8 +6,6 @@ const MainContainer = styled.View`
   flex-direction: column;
   align-items: stretch;
   background-color: #FFFFFF;
-  border-bottom-width: 1;
-  border-bottom-color: #E0E0E0;
   padding-bottom: 8;
 `;
 
@@ -46,7 +44,7 @@ export default class NewsListItem extends React.Component {
         </NewsImage>
         <NewsContent>
           <NewsTitle>{newsItem.title}</NewsTitle>
-          <NewsBody numberOfLines={3}>{newsItem.body}</NewsBody>
+          <NewsBody numberOfLines={this.props.fullBody ? null : 3}>{newsItem.body}</NewsBody>
           <NewsDate>Published by {newsItem.author} on {newsItem.date}</NewsDate>
         </NewsContent>
       </MainContainer>

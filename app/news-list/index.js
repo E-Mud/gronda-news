@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, ScrollView, ListView } from 'react-native';
+import { Text, View, Image, ScrollView, ListView, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import NewsListItem from '../news-list-item';
 import NewsService from '../services/news';
@@ -13,14 +13,16 @@ const ListSeparator = styled.View`
 `;
 
 const ListItemContainer = styled.View`
-  background-color: #FFFFFF;
+  background-color: #E0E0E0;
+  border-bottom-width: 1;
+  border-bottom-color: #E0E0E0;
   shadow-color: rgba(0,0,0,0.23);
   shadow-offset: 0 3;
   shadow-radius: 6;
   elevation: 4;
 `;
 
-export default class NewsPage extends React.Component {
+export default class NewsList extends React.Component {
   constructor(props){
     super(props)
 
@@ -30,6 +32,7 @@ export default class NewsPage extends React.Component {
 
     this._renderListItem = this._renderListItem.bind(this);
     this._renderSeparator = this._renderSeparator.bind(this);
+    this._notifyNewsClicked = this._notifyNewsClicked.bind(this)
   }
 
   componentDidMount(){
@@ -38,10 +41,22 @@ export default class NewsPage extends React.Component {
     })
   }
 
+  _notifyNewsClicked(newsItem){
+    const onNewsClicked = this.props.onNewsClicked;
+
+    if(onNewsClicked){
+      return () => {
+        onNewsClicked(newsItem)
+      }
+    }
+  }
+
   _renderListItem(newsItem) {
     return (
       <ListItemContainer>
-        <NewsListItem newsItem={newsItem} />
+        <TouchableOpacity onPress={this._notifyNewsClicked(newsItem)}>
+          <NewsListItem newsItem={newsItem}/>
+        </TouchableOpacity>
       </ListItemContainer>
     );
   }
@@ -54,6 +69,7 @@ export default class NewsPage extends React.Component {
     return (
       <MainContainer>
         <ListView
+          enableEmptySections={true}
           dataSource={this.state.listDataSource}
           renderRow={this._renderListItem}
           renderSeparator={this._renderSeparator}
