@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, Image, ScrollView, ListView } from 'react-native';
 import styled from 'styled-components/native';
-import newsList from './news.json';
 import NewsListItem from '../news-list-item';
+import NewsService from '../services/news';
 
 const MainContainer = styled.View`
   background-color: #E0E0E0;
@@ -24,14 +24,18 @@ export default class NewsPage extends React.Component {
   constructor(props){
     super(props)
 
-    const listDataSource = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2});
+    this.dataSource = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2});
 
-    this.state = {
-      listDataSource: listDataSource.cloneWithRows(newsList)
-    }
+    this.state = {listDataSource: this.dataSource.cloneWithRows([])}
 
     this._renderListItem = this._renderListItem.bind(this);
     this._renderSeparator = this._renderSeparator.bind(this);
+  }
+
+  componentDidMount(){
+    NewsService.getNews().then((newsList) => {
+      this.setState({listDataSource: this.dataSource.cloneWithRows(newsList)})
+    })
   }
 
   _renderListItem(newsItem) {
