@@ -34,7 +34,9 @@ export default class NewsListItem extends React.Component {
           <Title>{newsItem.title}</Title>
           <MainText numberOfLines={this.props.fullBody ? null : 3}>{newsItem.body}</MainText>
           <Footer>
-            <SecondaryText size="small" italic>Published by {newsItem.author} on {newsItem.date}</SecondaryText>
+            <SecondaryText size="small" italic>
+              Published by <SecondaryText primary>{newsItem.author}</SecondaryText> on {newsItem.date}
+            </SecondaryText>
           </Footer>
         </NewsContent>
       </MainContainer>
