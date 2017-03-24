@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { RegularText } from './app/text';
 import ProfilePage from './app/profile-page';
 import NewsList from './app/news-list';
 import styled from 'styled-components/native';
 import NewsDetails from './app/news-details';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { Colors } from './app/constants';
 
 import {
   createRouter,
@@ -13,10 +14,6 @@ import {
   TabNavigationItem,
   NavigationProvider
 } from '@expo/ex-navigation';
-
-const PrimaryText = styled.Text`
-  color: #1E8BC3
-`;
 
 const Router = createRouter(() => ({
   main: () => MainScreen,
@@ -31,16 +28,12 @@ class MainScreen extends React.Component {
   }
 
   _renderTitle(isSelected, title){
-    if(isSelected){
-      return <PrimaryText>{title}</PrimaryText>;
-    }else{
-      return <Text>{title}</Text>;
-    }
+    return <RegularText primary={isSelected}>{title}</RegularText>;
   }
 
   _renderIcon(icon){
     return (isSelected) => {
-      const color = isSelected ? '#1E8BC3' : 'black';
+      const color = isSelected ? Colors.PRIMARY : Colors.BLACK;
 
       return <SimpleLineIcons size={20} name={icon} color={color} />;
     }

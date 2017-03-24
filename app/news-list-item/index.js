@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
+import { MainText, Title, SecondaryText } from '../text';
 
 const MainContainer = styled.View`
   flex-direction: column;
@@ -14,27 +15,14 @@ const NewsContent = styled.View`
 `;
 
 const NewsImage = styled.Image`
+  opacity: 0.9;
   height: 150;
 `;
 
-const NewsBody = styled.Text`
-  opacity: 0.54;
-`;
-
-const NewsTitle = styled.Text`
-  opacity: 0.74;
-  font-size: 18;
-  font-weight: bold;
-`;
-
-const NewsDate = styled.Text`
-  opacity: 0.35;
+const Footer = styled.View`
   margin-top: 8;
-  font-size: 12;
-  font-style: italic;
 `;
 
-// <Image source={require('../assets/img/profile.jpg')}/>
 export default class NewsListItem extends React.Component {
   render() {
     const newsItem = this.props.newsItem
@@ -43,9 +31,11 @@ export default class NewsListItem extends React.Component {
         <NewsImage source={{uri: newsItem.imageSrc}}>
         </NewsImage>
         <NewsContent>
-          <NewsTitle>{newsItem.title}</NewsTitle>
-          <NewsBody numberOfLines={this.props.fullBody ? null : 3}>{newsItem.body}</NewsBody>
-          <NewsDate>Published by {newsItem.author} on {newsItem.date}</NewsDate>
+          <Title>{newsItem.title}</Title>
+          <MainText numberOfLines={this.props.fullBody ? null : 3}>{newsItem.body}</MainText>
+          <Footer>
+            <SecondaryText size="small" italic>Published by {newsItem.author} on {newsItem.date}</SecondaryText>
+          </Footer>
         </NewsContent>
       </MainContainer>
     );

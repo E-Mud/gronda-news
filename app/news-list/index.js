@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, ScrollView, ListView, TouchableOpacity } from 'react-native';
+import { View, ListView, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import NewsListItem from '../news-list-item';
 import NewsService from '../services/news';

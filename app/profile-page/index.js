@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { View, Image } from 'react-native';
+import { MainText } from '../text';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -23,10 +24,10 @@ export default class ProfilePage extends React.Component {
     return (
       <StyledView>
         <ProfileImage source={require('../assets/img/profile.jpg')}/>
-        <Text>Hi there I'm Alberto Casares</Text>
-        <Text>
+        <MainText align="center">Hi there I'm Alberto Casares</MainText>
+        <MainText align="center">
           I made this app with the purpose of bringing you the latest news from meneame. Enjoy <Ionicons name="md-heart" size={16} />
-        </Text>
+        </MainText>
       </StyledView>
     );
   }
