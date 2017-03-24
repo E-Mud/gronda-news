@@ -3,6 +3,7 @@ import { View, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import NewsListItem from '../news-list-item';
 import Comment from '../comment';
+import { SecondaryText } from '../text';
 
 const MainContainer = styled.ScrollView`
   background-color: #E0E0E0;
@@ -20,6 +21,10 @@ const NewsContent = styled(NewsListItem)`
   elevation: 4;
 `;
 
+const EmptyCommentList = styled.View`
+  padding: 16;
+`;
+
 export default class NewsDetails extends React.Component {
   _renderCommentList(newsItem) {
     if(newsItem.commentList && newsItem.commentList.length) {
@@ -31,7 +36,11 @@ export default class NewsDetails extends React.Component {
         );
       })
     }else{
-      return null;
+      return (
+        <EmptyCommentList>
+          <SecondaryText align="center">There are no comments</SecondaryText>
+        </EmptyCommentList>
+      );
     }
   }
 

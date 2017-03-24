@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { Colors } from '../constants';
 
 const fontSizes = {
+  large: 18,
   normal: 14,
   small: 12
 }
