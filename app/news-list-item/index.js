@@ -39,15 +39,15 @@ const NewsDate = styled.Text`
 // <Image source={require('../assets/img/profile.jpg')}/>
 export default class NewsListItem extends React.Component {
   render() {
-    const newItem = this.props.newItem
+    const newsItem = this.props.newsItem
     return (
       <MainContainer>
-        <NewsImage source={{uri: newItem.imageSrc}}>
+        <NewsImage source={{uri: newsItem.imageSrc}}>
         </NewsImage>
         <NewsContent>
-          <NewsTitle>{newItem.title}</NewsTitle>
-          <NewsBody numberOfLines={3}>{newItem.body}</NewsBody>
-          <NewsDate>Published by {newItem.author} on {newItem.date}</NewsDate>
+          <NewsTitle>{newsItem.title}</NewsTitle>
+          <NewsBody numberOfLines={3}>{newsItem.body}</NewsBody>
+          <NewsDate>Published by {newsItem.author} on {newsItem.date}</NewsDate>
         </NewsContent>
       </MainContainer>
     );
