@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { MainText, Title, SecondaryText } from '../text';
+import CommentCount from '../comment-count';
 
 const MainContainer = styled.View`
   flex-direction: column;
@@ -20,6 +21,9 @@ const NewsImage = styled.Image`
 `;
 
 const Footer = styled.View`
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
   margin-top: 8;
 `;
 
@@ -34,9 +38,10 @@ export default class NewsListItem extends React.Component {
           <Title>{newsItem.title}</Title>
           <MainText numberOfLines={this.props.fullBody ? null : 3}>{newsItem.body}</MainText>
           <Footer>
-            <SecondaryText size="small" italic>
+            <SecondaryText style={{flex: 1}} size="small" italic>
               Published by <SecondaryText primary>{newsItem.author}</SecondaryText> on {newsItem.date}
             </SecondaryText>
+            <CommentCount count={newsItem.commentList.length} />
           </Footer>
         </NewsContent>
       </MainContainer>
